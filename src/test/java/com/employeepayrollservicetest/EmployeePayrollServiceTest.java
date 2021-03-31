@@ -5,6 +5,7 @@ import com.employeepayrollservice.EmployeePayrollService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -24,10 +25,12 @@ public class EmployeePayrollServiceTest {
         employeePayrollService.printData(FILE_IO);
         long entries = employeePayrollService.countEntries(FILE_IO);
         Assertions.assertEquals(3, entries);
+    }
 
-
-
-
-
+    @Test
+    public void givenFileOnReadingFromFileShouldMatchEmployeeCount() {
+        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+        long entries = employeePayrollService.readEmployeePayrollData(FILE_IO);
+        Assertions.assertEquals(3, entries);
     }
 }

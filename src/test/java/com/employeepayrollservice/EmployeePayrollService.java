@@ -44,7 +44,7 @@ public class EmployeePayrollService {
 
 
 
-    private void readEmployeePayrollData(Scanner consoleInputReader) {
+    public void readEmployeePayrollData(Scanner consoleInputReader) {
         System.out.println("Enter Employee ID: ");
         int id = consoleInputReader.nextInt();
         System.out.println("Enter Employee Name: ");
