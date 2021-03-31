@@ -3,12 +3,29 @@ package com.employeepayrollservice;
 
 import EmployeePayrollFileIOService.EmployeePayrollFileIOService;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
 
+
+    public void printData(IOService fileIo) {
+        try {
+            Files.lines(new File("payroll-file.txt").toPath()).forEach(System.out::println);
+        } catch (IOException e) { }
+    }
+
+    public long countEntries(IOService fileIo) {
+        long entries = 0;
+        try {
+            entries = Files.lines(new File("payroll-file.txt").toPath()).count();
+        } catch (IOException e) { }
+        return entries;
+    }
 
     public enum IOService {CONSOLE_IO, FILE_IO,DB_IO, REST_IO}
     private List<EmployeePayrollData> employeePayrollList;
